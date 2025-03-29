@@ -24,8 +24,25 @@ program
     .alias('c')
     .description('创建新项目')
     .action(async (projectName: any) => {
-        await createProject(projectName);
+        try {
+        // 询问和项目创建逻辑
+            await createProject(projectName);
+        } catch (error: any) {
+            if (error.name === 'ExitPromptError') {
+                console.log('\n😈操作已取消');
+
+                process.exit(0);
+            } else {
+                console.error('发生错误:', error);
+                process.exit(1);
+            };
+        }
     });
 
+// 处理信号
+process.on('SIGINT', () => {
+    console.log('\n😈操作已取消');
+    process.exit(0);
+});
 
 program.parse(process.argv);

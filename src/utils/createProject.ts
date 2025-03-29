@@ -91,10 +91,13 @@ async function createProject(projectName: string) {
         console.log(colors.cyan('  npm install'));
         console.log(colors.cyan('  npm run dev'));
         process.exit(0);
-    } catch (error) {
-        spinner.fail('项目创建失败');
-        console.error(error);
-        process.exit(1);
+    } catch (error: any) {
+        if (error.name === 'ExitPromptError') {
+            console.log('\n😈操作已取消');
+        } else {
+            console.error('发生错误:', error);
+        };
+        process.exit(0);
     }
 }
 
