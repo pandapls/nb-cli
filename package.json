@@ -1,0 +1,55 @@
+{
+  "name": "nb-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "author": "pandapls",
+  "bin": {
+    "nb-cli": "./dist/main.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
+   "keywords": [
+    "cli",
+    "template",
+    "project"
+  ],
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/pandapls/nb-cli.git"
+  },
+  "homepage": "https://github.com/pandapls/nb-cli.git#readme",
+  "bugs": {
+    "url": "https://github.com/pandapls/nb-cli.git/issues"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/main.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "download-git-repo": "^3.0.2",
+    "ejs": "^3.1.10",
+    "figlet": "^1.8.0",
+    "fs-extra": "^11.3.0",
+    "glob": "^11.0.1",
+    "inquirer": "^12.5.0",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.5",
+    "@types/figlet": "^1.7.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/glob": "^8.1.0",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^22.13.14",
+    "typescript": "^5.8.2"
+  }
+}
