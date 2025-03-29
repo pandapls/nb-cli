@@ -4,7 +4,7 @@
 ## 安装
 
 ```bash
-npm install -g nb-cli
+npm install -g @pandapls/nb-cli
 ```
 
 ## 使用方法
