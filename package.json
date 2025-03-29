@@ -1,5 +1,5 @@
 {
-  "name": "nb-cli",
+  "name": "@pandapls/nb-cli",
   "version": "1.0.0",
   "description": "",
   "main": "dist/main.js",
