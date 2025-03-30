@@ -4,18 +4,22 @@
   "description": "",
   "main": "dist/main.js",
   "author": "pandapls",
+  "readme": "README.md",
   "bin": {
     "nb-cli": "./dist/main.js"
   },
   "files": [
     "dist",
     "bin",
-    "README.md"
+    "README.md",
+    "README.zh.md"
   ],
   "keywords": [
     "cli",
     "template",
-    "project"
+    "project",
+    "react",
+    "vue"
   ],
   "repository": {
     "type": "git",

@@ -1,29 +1,29 @@
-# NB-CLI
-一个用于快速创建项目模板的命令行工具
+[English](README.md) | [中文](README.zh.md)
 
-## 安装
+# NB CLI
+A command-line tool for quickly creating project templates
+
+## Installation
 
 ```bash
 npm install -g @pandapls/nb-cli
 ```
 
-## 使用方法
+## Usage
 
-创建新项目:
+Create a new project:
 ```bash
 nb-cli create my-project
 ```
 
-选项:
-- React + TypeScript + TailwindCSS + ShadcnUI 项目模板
-- Vue3 + TypeScript + TailwindCSS + Element Plus 项目模板
+Options:
+- Project template for React + TypeScript + TailwindCSS + ShadcnUI
+- Project template for Vue3 + TypeScript + TailwindCSS + Element Plus
 
 
-## 支持的模板
+## Supported Templates
+- React applications
+- Vue3 applications
 
-- React 应用
-- Vue3 应用
-
-## 许可证
-
+## License
 MIT
