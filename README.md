@@ -1,6 +1,6 @@
 [English](README.md) | [中文](README.zh.md)
 
-# NB CLI
+# NB-CLI
 A command-line tool for quickly creating project templates
 
 ## Installation
