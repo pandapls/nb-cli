@@ -19,7 +19,7 @@ nb-cli create my-project
 Options:
 - Project template for React + TypeScript + TailwindCSS + ShadcnUI
 - Project template for Vue3 + TypeScript + TailwindCSS + Element Plus
-
+- Project template for Monorepo
 
 ## Supported Templates
 - React applications

@@ -10,6 +10,12 @@ export const projectTypeList = [
         value: '2',
         gitUrl: 'git@github.com:pandapls/react-ts-tailwindcss-shadcnUI.git',
         description: 'React + TypeScript + TailwindCSS + ShadcnUI 项目模板'
+    },
+    {
+        name: 'Monorepo-Turborepo',
+        value: '2',
+        gitUrl: 'git@github.com:pandapls/monorepo-template.git',
+        description: 'Monorepo + Turborepo + TypeScript  项目模板'
     }
 ];
 

@@ -19,11 +19,13 @@ nb-cli create my-project
 选项:
 - React + TypeScript + TailwindCSS + ShadcnUI 项目模板
 - Vue3 + TypeScript + TailwindCSS + Element Plus 项目模板
+- Monorepo 项目模版
 
 
 ## 支持的模板
 - React 应用
 - Vue3 应用
+- Monorepo 应用
 
 ## 许可证
 MIT
