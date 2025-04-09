@@ -24,6 +24,7 @@ Options:
 ## Supported Templates
 - React applications
 - Vue3 applications
+- Monorepo applications
 
 ## License
 MIT
