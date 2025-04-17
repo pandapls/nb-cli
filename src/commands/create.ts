@@ -1,13 +1,12 @@
 import inquirer from "inquirer";
 import colors from "ansi-colors";
 import oraSpinner from 'ora';
-import { projectTypeList } from "./constant";
+import { projectTypeList } from "../templates/config";
 import path from "path";
-import { cloneRepository, initNewGitRepo, removeDir } from "./git";
+import { cloneRepository, initNewGitRepo, removeDir } from "../utils/git";
 import fs from "fs";
-// 创建项目的主函数
-async function createProject(projectName: string) {
 
+export default async function createCommand(projectName: string) {
     // 如果没有提供项目名称，则询问用户
     if (!projectName) {
         const { inputProjectName } = await inquirer.prompt([
@@ -19,6 +18,8 @@ async function createProject(projectName: string) {
             }
         ]);
         projectName = inputProjectName;
+    } else if (projectName.trim() === '') {
+        throw new Error('项目名称不能为空');
     }
 
     // 询问项目类型
@@ -33,6 +34,7 @@ async function createProject(projectName: string) {
             }))
         }
     ]);
+
     // 确认信息
     console.log('\n');
     console.log('✅ 项目信息确认:');
@@ -52,36 +54,33 @@ async function createProject(projectName: string) {
 
     if (!confirmCreate) {
         console.log(colors.yellow('已取消项目创建'));
-        process.exit(0);
+        return;
     }
+
     // 开始创建项目
     const spinner = oraSpinner({ text: '初始化项目...' });
     spinner.start();
     const projectDir = path.join(process.cwd(), projectName);
 
-    // 模拟项目创建流程
     try {
         const selectedTemplate = projectTypeList.find(item => item.value === projectType);
         if (!selectedTemplate || !selectedTemplate.gitUrl) {
             spinner.fail('无效的项目模板');
-            process.exit(1);
+            throw new Error('无效的项目模板');
         }
 
         // git clone逻辑
         spinner.text = '正在下载模板...';
-        try {
-            await cloneRepository(selectedTemplate.gitUrl, projectName);
-            const gitFolder = path.join(projectDir, '.git');
-            if (fs.existsSync(gitFolder)) {
-                await removeDir(gitFolder);
-            }
-            // 初始化新的 git 仓库（可选）
-            await initNewGitRepo(projectDir);
-        } catch (error) {
-            spinner.fail('模板下载失败');
-            console.error(error);
-            process.exit(1);
+        await cloneRepository(selectedTemplate.gitUrl, projectName);
+
+        const gitFolder = path.join(projectDir, '.git');
+        if (fs.existsSync(gitFolder)) {
+            await removeDir(gitFolder);
         }
+
+        // 初始化新的 git 仓库
+        await initNewGitRepo(projectDir);
+
         spinner.succeed('项目创建成功!');
 
         console.log('\n');
@@ -90,15 +89,9 @@ async function createProject(projectName: string) {
         console.log(colors.cyan(`  cd ${projectName}`));
         console.log(colors.cyan('  npm install'));
         console.log(colors.cyan('  npm run dev'));
-        process.exit(0);
+        return;
     } catch (error: any) {
-        if (error.name === 'ExitPromptError') {
-            console.log('\n😈操作已取消');
-        } else {
-            console.error('发生错误:', error);
-        };
-        process.exit(0);
+        spinner.fail('项目创建失败');
+        throw error;
     }
-}
-
-export default createProject;
+} 

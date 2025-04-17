@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import colors from "ansi-colors";
-import createProject from "./utils/createProject";
+import createCommand from "./commands/create";
 const program = new Command();
 
 const printBanner = () => {
@@ -26,7 +26,7 @@ program
     .action(async (projectName: any) => {
         try {
         // 询问和项目创建逻辑
-            await createProject(projectName);
+            await createCommand(projectName);
         } catch (error: any) {
             if (error.name === 'ExitPromptError') {
                 console.log('\n😈操作已取消');

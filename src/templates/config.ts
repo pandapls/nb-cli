@@ -1,4 +1,11 @@
-export const projectTypeList = [
+export interface TemplateConfig {
+    name: string;
+    value: string;
+    gitUrl: string;
+    description: string;
+}
+
+export const projectTypeList: TemplateConfig[] = [
     {
         name: 'Vue3-TypeScript-TailwindCSS-ElementPlus',
         value: '1',
@@ -13,9 +20,8 @@ export const projectTypeList = [
     },
     {
         name: 'Monorepo-Turborepo',
-        value: '2',
+        value: '3',
         gitUrl: 'git@github.com:pandapls/monorepo-template.git',
         description: 'Monorepo + Turborepo + TypeScript  项目模板'
     }
-];
-
+]; 
